@@ -253,6 +253,13 @@ public:
 	static bool uint8(void);
 	static bool uint8(bool p);
 
+	static bool Int128(void);
+        static bool Int128(bool p);
+
+        static bool UInt128(void);
+        static bool UInt128(bool p);
+
+
 	static bool enable_float(void);
 	static bool enable_float(bool p);
 
@@ -554,6 +561,8 @@ private:
 	static bool	longlong_;
 	static bool	int8_;
 	static bool	uint8_;
+	static bool     Int128_;
+        static bool     UInt128_;
 	static bool	enable_float_;
 	static bool	strict_float_;
 	static bool	pointers_;

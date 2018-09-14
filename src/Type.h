@@ -83,8 +83,10 @@ enum eSimpleType
 	eFloat,
 	// eDouble,
 	eULongLong,
+	eUInt128,
+	eInt128,
 };
-#define MAX_SIMPLE_TYPES ((eSimpleType) (eULongLong+1))
+#define MAX_SIMPLE_TYPES ((eSimpleType) (eInt128+1))
 
 enum eMatchType
 {

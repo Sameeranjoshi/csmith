@@ -430,6 +430,12 @@ Type::get_type_from_string(const string &type_string)
 	else if (type_string == "Float") {
 		return &Type::get_simple_type(eFloat);
 	}
+	else if (type_string == "Int128") {
+		return &Type::get_simple_type(eInt128);
+	}
+	else if (type_string == "UInt128") {
+		return &Type::get_simple_type(eUInt128);
+	}
 
 	assert(0 && "Unsupported type string!");
 	return NULL;
@@ -1424,6 +1430,8 @@ Type::to_unsigned(void) const
 			case eShort: return &get_simple_type(eUShort);
 			case eLong: return &get_simple_type(eULong);
 			case eLongLong: return &get_simple_type(eULongLong);
+			case eInt128: return &get_simple_type(eInt128);
+			case eUInt128: return &get_simple_type(eUInt128);
 			default:
 				break;
 		}
@@ -1581,16 +1589,18 @@ Type::SizeInBytes(void) const
 		switch (simple_type) {
 		case eVoid:		return 0;
 		case eInt:		return 4;
-		case eShort:	return 2;
+		case eShort:		return 2;
 		case eChar:		return 1;
 		case eLong:		return 4;
-		case eLongLong:	return 8;
-		case eUChar:	return 1;
+		case eLongLong:		return 8;
+		case eUChar:		return 1;
 		case eUInt:		return 4;
-		case eUShort:	return 2;
-		case eULong:	return 4;
-		case eULongLong:return 8;
-		case eFloat:	return 4;
+		case eUShort:		return 2;
+		case eULong:		return 4;
+		case eULongLong:	return 8;
+		case eFloat:		return 4;
+		case eInt128: 		return 16;
+		case eUInt128: 		return 16;
 //		case eDouble:	return 8;
 		}
 		break;
@@ -1720,10 +1730,21 @@ Type::Output(std::ostream &out) const
 			out << "void";
 		} else if (this->simple_type == eFloat) {
 		        out << "float";
-		} else {
+		}
+		else {
+			if(this->simple_type == eInt128){
+				out << "__int";
+				out << (SizeInBytes() * 8);
+			}
+			else if(this->simple_type == eUInt128){
+				out << "unsigned __int";
+				out << (SizeInBytes() * 8);
+			}
+			else{
 			out << (is_signed() ? "int" : "uint");
 			out << (SizeInBytes() * 8);
 			out << "_t";
+			}
 		}
 		break;
 	case ePointer:   ptr_type->Output( out ); out << "*"; break;

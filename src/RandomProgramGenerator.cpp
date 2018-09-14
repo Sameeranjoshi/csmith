@@ -170,6 +170,8 @@ static void print_help()
 	cout << "  --longlong| --no-longlong: enable | disable long long (enabled by default)." << endl << endl;
 	cout << "  --int8 | --no-int8: enable | disable int8_t (enabled by default)." << endl << endl;
 	cout << "  --uint8 | --no-uint8: enable | disable uint8_t (enabled by default)." << endl << endl;
+	cout << "  --int128 | --no-int128: enable | disable generate__int128 as datatype extension (disabled by default)." << endl << endl;
+        cout << "  --uint128 | --no-uint128: enable | disable generate unsigned __int128 as datatype extension (disabled by default)." << endl << endl;
 	cout << "  --float | --no-float: enable | disable float (disabled by default)." << endl << endl;
 	cout << "  --main | --nomain: enable | disable to generate main function (enabled by default)." << endl <<  endl;
 	cout << "  --math64 | --no-math64: enable | disable 64-bit math ops (enabled by default)." << endl << endl;
@@ -799,6 +801,27 @@ main(int argc, char **argv)
 			CGOptions::uint8(false);
 			continue;
 		}
+
+		if (strcmp (argv[i], "--int128") == 0) {
+                        CGOptions::Int128(true);
+                        continue;
+                }
+
+                if (strcmp (argv[i], "--no-int128") == 0) {
+                        CGOptions::Int128(false);
+                        continue;
+                }
+
+                if (strcmp (argv[i], "--uint128") == 0) {
+                        CGOptions::UInt128(true);
+                        continue;
+                }
+
+                if (strcmp (argv[i], "--no-uint128") == 0) {
+                        CGOptions::UInt128(false);
+			continue;
+		}
+
 
 		if (strcmp (argv[i], "--float") == 0) {
 			CGOptions::enable_float(true);
