@@ -376,6 +376,9 @@ public:
 
 	static bool tm_relaxed(void);
 	static bool tm_relaxed(bool p);
+	
+	static bool type_of(void);
+	static bool type_of(bool p);
 	/////////////////////////////////////////////////////////
 	static void set_default_settings(void);
 
@@ -636,6 +639,7 @@ private:
 	//extensions
 	static bool computed_goto_;
 	static bool tm_relaxed_;
+	static bool type_of_;
 private:
 	CGOptions(void);
 	CGOptions(CGOptions &cgo);
