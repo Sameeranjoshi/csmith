@@ -655,6 +655,13 @@ Probabilities::set_default_safe_ops_size_prob()
 		SET_SINGLE_NAME1("safe_ops_size_int8", Int8, 0);
 	}
 
+/*	if (CGOptions::Int128() ) {
+		SET_SINGLE_NAME1("safe_ops_size_Int128", Int128, 1);
+	}
+	else {
+		SET_SINGLE_NAME1("safe_ops_size_Int128", Int128, 0);
+	}
+*/
 	SET_SINGLE_NAME1("safe_ops_size_int16", Int16, 1);
 	SET_SINGLE_NAME1("safe_ops_size_int32", Int32, 1);
 	if (CGOptions::allow_int64()) {
@@ -677,6 +684,21 @@ Probabilities::set_default_simple_types_prob()
 	// We only use void for function's parameter, so
 	// disallow choosing void type from other places
 	SET_SINGLE_NAME("void_prob", Void, 0);
+	if (CGOptions::Int128()) {
+		SET_SINGLE_NAME("Int128_prob", Int128, 1);
+	}
+	else {
+		SET_SINGLE_NAME("Int128_prob", Int128, 0);
+	}
+
+	 if (CGOptions::UInt128()) {
+                SET_SINGLE_NAME("UInt128_prob", UInt128, 1);
+        }
+        else {
+                SET_SINGLE_NAME("UInt128_prob", UInt128, 0);
+        }
+
+
 	if (CGOptions::int8()) {
 		SET_SINGLE_NAME("char_prob", Char, 1);
 	}

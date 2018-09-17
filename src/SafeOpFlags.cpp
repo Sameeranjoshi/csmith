@@ -96,6 +96,7 @@ SafeOpFlags::flags_to_type(bool sign, enum SafeOpSize size)
 		case sInt16: return eUShort;
 		case sInt32: return eUInt;
 		case sInt64: return eULongLong;
+	//*add when unsigned added*//
 		default: assert(0); break;
 		}
 	}

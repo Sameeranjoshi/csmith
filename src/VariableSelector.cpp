@@ -553,6 +553,7 @@ VariableSelector::GenerateNewGlobal(Effect::Access access, const CGContext &cg_c
 	}
 	var_created = true;
 	return var;
+
 }
 
 Variable *

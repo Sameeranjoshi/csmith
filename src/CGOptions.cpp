@@ -202,6 +202,9 @@ DEFINE_GETTER_SETTER_BOOL(fast_execution);
 //extensions
 DEFINE_GETTER_SETTER_BOOL(computed_goto);
 DEFINE_GETTER_SETTER_BOOL(tm_relaxed);
+DEFINE_GETTER_SETTER_BOOL(Int128);
+DEFINE_GETTER_SETTER_BOOL(UInt128);
+DEFINE_GETTER_SETTER_BOOL(type_of);
 
 void
 CGOptions::set_default_builtin_kinds()
@@ -319,6 +322,9 @@ CGOptions::set_default_settings(void)
 	//extensions
 	computed_goto(false);
 	tm_relaxed(false);
+	Int128(false);
+	UInt128(false);
+	type_of(false);
 }
 
 // Add options necessary for cpp 

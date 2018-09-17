@@ -121,7 +121,13 @@ GenerateRandomIntConstant(void)
 
 	return val;
 }
-
+static string
+GenerateRandomInt128Constant(void)
+{
+	string val;
+	val = "0x" + RandomHexDigits( 16 ) ;
+	return val;
+}
 // --------------------------------------------------------------
 static string
 GenerateRandomShortConstant(void)
@@ -380,6 +386,8 @@ GenerateRandomConstant(const Type* type)
 			case eULong:     v = GenerateRandomLongConstant();		break;
 			case eULongLong: v = GenerateRandomLongLongConstant();		break;
 			case eFloat:     v = GenerateRandomFloatHexConstant();		break;
+			case eInt128:    v = GenerateRandomInt128Constant();		break;
+			case eUInt128:   v = GenerateRandomInt128Constant();		break;
 			// case eDouble:    v = GenerateRandomFloatConstant();		break;
 			default:
 				assert(0 && "Unsupported type!");
